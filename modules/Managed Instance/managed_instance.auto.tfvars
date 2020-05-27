@@ -3,7 +3,6 @@ managed_instance_object_main           = {
        sku_name                        = "GP_Gen5"
        sku_tier                        = "GeneralPurpose"
        adminUsername                   = "testadmin"
-       adminPassword                   = "temp0r4ry"
        vNetResourceGroup               = "rg_neu_terraform"
        vNetName                        = "vnet_terraform"
        subnetName                      = "managed_instance"
@@ -17,3 +16,5 @@ managed_instance_object_main           = {
        publicDataEndpointEnabled       =  false
        timezoneid                      = "UTC"
 }
+
+adminPassword = "changemepls123"
