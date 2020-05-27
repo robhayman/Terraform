@@ -10,3 +10,7 @@ variable "managed_instance_object" {
     description = "(Required) Object defining managed instance"
    
 }
+
+variable "adminPassword" {
+    description = "(Required) Administrator password"
+}
