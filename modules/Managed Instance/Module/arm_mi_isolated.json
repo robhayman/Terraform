@@ -27,48 +27,43 @@
         }
       },
       "skuName": {
-        "type": "string",
+        "type": "string"
        
       },
       "skuEdition": {
-        "type": "string",
+        "type": "string"
         
       },
       "storageSizeInGB": {
-        "type": "int",
+        "type": "int"
        
       },
       "vCores": {
-        "type": "int",
+        "type": "int"
        
       },
       "licenseType": {
-        "type": "string",
+        "type": "string"
         
       },
       "hardwareFamily": {
-        "type": "string",
+        "type": "string"
        
       },
       "dnsZonePartner": {
-        "type": "string",
+        "type": "string"
         
       },
       "collation": {
-        "type": "string",
+        "type": "string"
         
       },
       "proxyOverride": {
-        "type": "string",
+        "type": "string"
        
       },
-      "publicDataEndpointEnabled": {
-        "type": "bool",
-        
-      },
       "timezoneId": {
-        "type": "string",
-      
+        "type": "string"
       },
       "vNetResourceGroup": {
         "type": "string",
@@ -91,7 +86,7 @@
     },
     "resources": [
       {
-        "apiVersion": "2015-05-01-preview",
+        "apiVersion": "2018-06-01-preview",
         "identity": {
           "type": "SystemAssigned"
         },
@@ -112,7 +107,6 @@
           "dnsZonePartner": "[parameters('dnsZonePartner')]",
           "collation": "[parameters('collation')]",
           "proxyOverride": "[parameters('proxyOverride')]",
-          "publicDataEndpointEnabled": "[parameters('publicDataEndpointEnabled')]",
           "timezoneId": "[parameters('timezoneId')]"
         },
         "type": "Microsoft.Sql/managedInstances"
@@ -120,6 +114,6 @@
     ],
     "outputs": {},
     "variables": {}
-     }
+}
    
    
