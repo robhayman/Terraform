@@ -14,3 +14,18 @@ variable "managed_instance_object" {
 variable "adminPassword" {
     description = "(Required) Administrator password"
 }
+
+variable "rt_name_mi" {
+    description = "name for MI route table"
+}
+
+variable "mi_Subnet_Prefix" {
+    description = "subnet prefix for MI route table"
+}
+
+variable "nsg_name_mi" {
+    description = "NSG for MI"
+}
+
+
+

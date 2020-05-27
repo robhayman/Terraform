@@ -1,7 +1,7 @@
 resource "azurerm_template_deployment" "managed_instance" {
 
   name                = var.managed_instance_object.name
-  resource_group_name = var.resource_group_name
+  resource_group_name = local.resource_groups.managed_instance.name
 
   template_body       = file("${path.module}/arm_mi_isolated.json")
 
@@ -14,7 +14,7 @@ resource "azurerm_template_deployment" "managed_instance" {
             "value": "${var.adminPassword}"
           },
           "location": {
-            "value": "${var.location}"
+            "value": "${local.resource_groups.managed_instance.location}"
           },
           "managedInstanceName": {
             "value": "${var.managed_instance_object.name}"

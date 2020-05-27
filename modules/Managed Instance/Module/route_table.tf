@@ -1,12 +1,8 @@
-# Defining the Resource Group for the Subnet. 
-data "azurerm_resource_group" "rt" {
-  name = var.rt_rg
-}
 
 resource "azurerm_route_table" "general_rt" {
-  name                          = var.rt_name_general
-  location                      = "${data.azurerm_resource_group.rt.location}"
-  resource_group_name           = "${data.azurerm_resource_group.rt.name}"
+  name                          = var.rt_name_mi
+  location                      = local.resource_groups.managed_instance.location
+  resource_group_name           = local.resource_groups.managed_instance.name
   disable_bgp_route_propagation = false
 
   route {

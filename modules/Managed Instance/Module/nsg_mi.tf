@@ -1,11 +1,8 @@
-# Defining the Resource Group for the Subnet. 
-data "azurerm_resource_group" "nsg" {
-  name = var.nsg_rg
-}
+
 resource "azurerm_network_security_group" "general_nsg" {
-  name                = var.nsg_name_general
-  location            = "${data.azurerm_resource_group.nsg.location}"
-  resource_group_name = "${data.azurerm_resource_group.nsg.name}"
+  name                = var.nsg_name_mi
+  location                      = local.resource_groups.managed_instance.location
+  resource_group_name           = local.resource_groups.managed_instance.name
   security_rule {
     access                                     = "Allow"
     description                                = "Public Endpoint"
@@ -60,42 +57,7 @@ resource "azurerm_network_security_group" "general_nsg" {
     source_port_range                     = "*"
     source_port_ranges                    = []
   }
-  security_rule {
-    access                                     = "Allow"
-    description                                = "Allow On Premis Access"
-    destination_address_prefix                 = "*"
-    destination_address_prefixes               = []
-    destination_application_security_group_ids = []
-    destination_port_range                     = "*"
-    # destination_port_ranges                    = []
-    direction                             = "Inbound"
-    name                                  = "allow_OnpremisisSQL_MI_Inbound"
-    priority                              = 400
-    protocol                              = "*"
-    source_address_prefix                 = var.on_Prem_Subnet_Inbound_Prefix
-    source_address_prefixes               = []
-    source_application_security_group_ids = []
-    source_port_range                     = "*"
-    source_port_ranges                    = []
-  }
-  security_rule {
-    access                                     = "Allow"
-    description                                = "Allow On Premis Access"
-    destination_address_prefix                 = var.on_Prem_Subnet_Outbound_Prefix
-    destination_address_prefixes               = []
-    destination_application_security_group_ids = []
-    # destination_port_range                     = "*"
-    destination_port_ranges               = ["1433", "1434", "50001", "50003", "49411", "53535", "53636", "11000-11999", "14000-14999"]
-    direction                             = "Outbound"
-    name                                  = "allow_OnpremisisSQL_MI_Outbound"
-    priority                              = 400
-    protocol                              = "*"
-    source_address_prefix                 = "*"
-    source_address_prefixes               = []
-    source_application_security_group_ids = []
-    source_port_range                     = "*"
-    source_port_ranges                    = []
-  }
+  
   security_rule {
     access                                     = "Allow"
     description                                = "Allow health probe"
